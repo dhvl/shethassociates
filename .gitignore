@@ -39,4 +39,5 @@ premium-web-designer-workspace/
 credentials.json
 token.json
 *.zip
+dist/
 

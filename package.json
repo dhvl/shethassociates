@@ -3,6 +3,6 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "echo 'Building static site'"
+    "build": "mkdir -p dist && cp -r *.html assets sitemap.xml robots.txt site.webmanifest dist"
   }
 }
