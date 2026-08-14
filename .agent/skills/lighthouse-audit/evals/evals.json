@@ -1,0 +1,29 @@
+{
+    "skill_name": "lighthouse-audit",
+    "evals": [
+        {
+            "id": 1,
+            "prompt": "Run a Lighthouse audit on my Next.js landing page at http://localhost:3000 and fix any performance issues you find. The project is at /Users/apple/.gemini/antigravity/scratch/Antigravity Skills/alabs-lp",
+            "expected_output": "Local mode triggered. Scores printed before and after. Code changes applied (e.g. next/image priority, dynamic imports, cache headers). Summary table showing score delta.",
+            "files": []
+        },
+        {
+            "id": 2,
+            "prompt": "Can you audit https://analytixlabs.co.in and tell me what's hurting its performance score?",
+            "expected_output": "Live mode triggered (no local codebase provided). Lighthouse runs against the live URL. A structured recommendations report is produced with prioritised fixes — no code edits made. Key metrics (LCP, TBT, CLS) shown.",
+            "files": []
+        },
+        {
+            "id": 3,
+            "prompt": "Run lighthouse on https://careersuccess.analytixlabs.co.in — the local source is at /Users/apple/.gemini/antigravity/scratch/Antigravity Skills/alabs-lp. Apply whatever fixes you can.",
+            "expected_output": "Live URL audited. User also provided local codebase, so skill pivots to apply code fixes locally. Recommendations report generated + code changes made. User told to redeploy to see score improvement on live URL.",
+            "files": []
+        },
+        {
+            "id": 4,
+            "prompt": "My site scores 62 on Lighthouse performance. Can you check what's wrong and fix the image optimisation and LCP issues? localhost:3000",
+            "expected_output": "Local mode. LCP image identified and given priority prop, <img> tags replaced with next/image, sizes prop added. Before/after score comparison shown.",
+            "files": []
+        }
+    ]
+}

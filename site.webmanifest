@@ -1,0 +1,15 @@
+{
+  "name": "SHETH ASSOCIATES",
+  "short_name": "SHETH ASSOCIATES",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a1728",
+  "theme_color": "#0a1728",
+  "icons": [
+    {
+      "src": "/assets/sheth-emblem.png",
+      "sizes": "any",
+      "type": "image/png"
+    }
+  ]
+}

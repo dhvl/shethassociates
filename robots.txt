@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Disallow: /assets/Sheth-Associates-Firm-Profile.pdf
+Sitemap: https://shethassociates.in/sitemap.xml
