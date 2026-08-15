@@ -8,6 +8,39 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/styles.css">
+<style id="people-critical-render-fix">
+/* PEOPLE PAGE CRITICAL RENDER FIX: content must never depend on JS/animation */
+html, body { min-height:100%; }
+body[data-page="people"] main { display:block !important; visibility:visible !important; opacity:1 !important; position:relative !important; z-index:1 !important; }
+body[data-page="people"] .page-hero,
+body[data-page="people"] .people-philosophy,
+body[data-page="people"] .team-section,
+body[data-page="people"] .branch-network,
+body[data-page="people"] .site-footer { display:block !important; visibility:visible !important; opacity:1 !important; position:relative; }
+body[data-page="people"] .brand-loader { display:none !important; visibility:hidden !important; opacity:0 !important; pointer-events:none !important; }
+body[data-page="people"] .team-card,
+body[data-page="people"] .team-card.reveal-team,
+body[data-page="people"] .advocate-contact,
+body[data-page="people"] .advocate-phone-list,
+body[data-page="people"] .advocate-phone,
+body[data-page="people"] .advocate-whatsapp { visibility:visible !important; opacity:1 !important; transform:none !important; }
+@media (max-width:900px) {
+  body[data-page="people"] .page-hero { padding-top:125px !important; }
+  body[data-page="people"] .people-list { display:grid !important; grid-template-columns:1fr !important; }
+  body[data-page="people"] .team-card { animation:peopleMobileReveal .55s ease both !important; }
+  body[data-page="people"] .team-card:nth-child(1){animation-delay:.03s !important}
+  body[data-page="people"] .team-card:nth-child(2){animation-delay:.08s !important}
+  body[data-page="people"] .team-card:nth-child(3){animation-delay:.13s !important}
+  body[data-page="people"] .team-card:nth-child(4){animation-delay:.18s !important}
+  body[data-page="people"] .team-card:nth-child(5){animation-delay:.23s !important}
+  body[data-page="people"] .team-card:nth-child(6){animation-delay:.28s !important}
+  body[data-page="people"] .team-card:nth-child(7){animation-delay:.33s !important}
+  body[data-page="people"] .team-card:nth-child(8){animation-delay:.38s !important}
+  body[data-page="people"] .team-card:nth-child(9){animation-delay:.43s !important}
+  body[data-page="people"] .team-card:nth-child(10){animation-delay:.48s !important}
+}
+@keyframes peopleMobileReveal { from {opacity:0; transform:translateY(14px)} to {opacity:1; transform:none} }
+</style>
 <title>Our People | SHETH ASSOCIATES</title>
 <meta name="description" content="SHETH ASSOCIATES — Where Legacy Meets Legal Excellence. Litigation, strategy and advocacy from Rajkot, Gujarat.">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"LegalService","name":"SHETH ASSOCIATES","url":"https://shethassociates.in/","description":"Litigation, strategy and advocacy practice in Rajkot, Gujarat.","address":{"@type":"PostalAddress","streetAddress":"1213 / 1214, The Spire – 2, Sheetal Park Chowk, 150ft Ring Road","addressLocality":"Rajkot","postalCode":"360007","addressRegion":"Gujarat","addressCountry":"IN"}}</script></head><body data-page="people">
@@ -31,13 +64,13 @@
       <a href="people.html">Our People</a>
       <a href="experience.html">Experience</a>
       <a href="insights.html">Insights</a>
-      <a class="nav-cta" href="contact.html">Contact</a>
+      <a href="policies.html">Policies</a><a class="nav-cta" href="contact.html">Contact</a>
     </nav>
   </div>
 </header>
 
 <main>
-<section class="page-hero"><div class="container"><div class="eyebrow page-identity"># OUR PEOPLE</div><h1 class="display">People behind<br><em>the practice.</em></h1><p>A team of advocates with experience recorded across civil, criminal, revenue and specialised litigation.</p></div></div></section>
+<section class="page-hero"><div class="container"><div class="eyebrow page-identity"># OUR PEOPLE</div><h1 class="display">People behind<br><em>the practice.</em></h1><p>A team of advocates with experience recorded across civil, criminal, revenue and specialised litigation.</p></div></section>
 
 <section class="people-philosophy">
   <div class="container">
@@ -165,7 +198,7 @@
       <p class="muted">Litigation · Strategy · Advocacy</p>
     </div>
     <div><h4>Explore</h4><a href="firm.html">The Firm</a><a href="practice-areas.html">Practice Areas</a><a href="people.html">Our People</a><a href="experience.html">Experience</a></div>
-    <div><h4>Resources</h4><a href="insights.html">Insights</a><a href="assets/Sheth-Associates-Firm-Profile.pdf">Firm Profile</a><a href="contact.html">Contact</a><a href="disclaimer.html">Disclaimer</a></div>
+    <div><h4>Resources</h4><a href="insights.html">Insights</a><a href="assets/Sheth-Associates-Firm-Profile.pdf">Firm Profile</a><a href="contact.html">Contact</a><a href="policies.html">Policies</a><a href="disclaimer.html">Disclaimer</a></div>
     <div><h4>Rajkot Office</h4><p>1213 / 1214, The Spire – 2,<br>Shee­tal Park Chowk,<br>150ft Ring Road, Rajkot – 360 007,<br>Gujarat, India</p><a href="mailto:info@shethassociates.in">info@shethassociates.in</a></div>
   </div>
   <div class="container footer-bottom"><span>© 2026 SHETH ASSOCIATES. All rights reserved.</span><span>Professional legal services · Rajkot, Gujarat</span></div>

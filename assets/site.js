@@ -4,8 +4,7 @@ if(toggle) toggle.addEventListener('click',()=>nav.classList.toggle('open'));
 document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
 const progress=document.querySelector('.progress');
 window.addEventListener('scroll',()=>{const h=document.documentElement.scrollHeight-innerHeight; progress.style.width=(h>0?(scrollY/h)*100:0)+'%';},{passive:true});
-const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.12});
-document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+if ('IntersectionObserver' in window) { const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.12}); document.querySelectorAll('.reveal').forEach(el=>obs.observe(el)); } else { document.querySelectorAll('.reveal').forEach(el=>el.classList.add('visible')); }
 document.querySelectorAll('form.contact-form').forEach(form => {
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -212,3 +211,50 @@ if (methodCards.length) {
   }, {threshold:.15});
   io.observe(methodCards[0]);
 }
+
+
+/* FINAL MOBILE/ROBUST TEAM FALLBACK
+   Never leave advocate profiles hidden if an observer is unavailable. */
+(function () {
+  const cards = document.querySelectorAll('body[data-page="people"] .team-card');
+  if (!cards.length) return;
+
+  const revealAll = () => {
+    cards.forEach(card => {
+      card.classList.add('team-visible');
+      card.style.opacity = '1';
+      card.style.visibility = 'visible';
+      card.style.transform = 'none';
+    });
+  };
+
+  // The CSS already guarantees visibility. This is an additional JS safety net.
+  if (!('IntersectionObserver' in window)) revealAll();
+  window.addEventListener('load', () => {
+    setTimeout(revealAll, 1200);
+  }, { once: true });
+})();
+
+
+/* FINAL POLICIES MOBILE FALLBACK
+   Rendering of substantive policy content is independent of observers. */
+(function () {
+  if (!document.body || document.body.dataset.page !== 'policies') return;
+  const reveal = () => {
+    document.querySelectorAll('body[data-page="policies"] .auto-reveal, body[data-page="policies"] .policy-section').forEach(el => {
+      el.classList.add('is-visible');
+      el.style.opacity = '1';
+      el.style.visibility = 'visible';
+      el.style.transform = 'none';
+    });
+    document.querySelectorAll('body[data-page="policies"] main, body[data-page="policies"] main section').forEach(el => {
+      el.style.visibility = 'visible';
+      el.style.opacity = '1';
+    });
+  };
+  reveal();
+  document.addEventListener('DOMContentLoaded', reveal, {once:true});
+  window.addEventListener('load', reveal, {once:true});
+  setTimeout(reveal, 500);
+  setTimeout(reveal, 2000);
+})();

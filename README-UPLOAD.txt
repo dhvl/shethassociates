@@ -69,3 +69,16 @@ V6: Supplied full SHETH ASSOCIATES logo only. No separate emblem is used in navi
 V7: Our People includes direct Call buttons and WhatsApp buttons for all 9 advocates using the numbers supplied by the firm.
 
 V8: Practice Areas replaced with the complete 14-area detailed content supplied by the firm, with animated index, detailed matter lists, strategy sections and litigation approach timeline.
+
+FINAL MOBILE FIX — OUR PEOPLE
+-----------------------------
+The Our People page has been hardened for mobile browsers.
+Advocate profile cards and their direct contact/WhatsApp sections no longer depend
+on IntersectionObserver to become visible. A CSS mobile fallback plus a JavaScript
+safety net has been added. Replace the complete assets folder when deploying.
+
+POLICIES PAGE
+-------------
+Added policies.html with responsive policy index, Terms of Use, Privacy Policy, Refund & Cancellation, Return/Exchange, Delivery/Shipping, Professional Engagement, Confidentiality, Disclaimer and Contact/Grievance sections. The supplied PDF contained generic e-commerce placeholders; those portions were adapted for a law-firm website rather than copied as product/shipping claims.
+
+FINAL POLICIES MOBILE FIX: replace the complete assets folder. The Policies page no longer depends on IntersectionObserver for content visibility.

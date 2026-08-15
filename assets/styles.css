@@ -51,7 +51,7 @@ body{overflow-x:hidden}.brand img{display:none}.brand-mark{width:40px;height:40p
 .timeline-item h2{transition:color .35s,transform .35s}.timeline-item:hover h2{color:#8f6a1e;transform:translateX(5px)}
 .team-section{position:relative;overflow:hidden;background:#f3f0e8}.team-ambient{position:absolute;width:500px;height:500px;right:-180px;top:-120px;border-radius:50%;border:1px solid rgba(201,162,77,.12);box-shadow:0 0 100px rgba(201,162,77,.06);animation:teamOrb 12s ease-in-out infinite}
 .team-intro{max-width:850px;margin:0 auto 55px;text-align:center;position:relative;z-index:2}.team-intro .serif{margin:12px 0 18px}.team-intro p{max-width:650px;margin:auto;color:var(--muted)}
-.people-list-animated{position:relative;z-index:2}.team-card{opacity:0;transform:translateY(40px) scale(.985);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.75,.2,1),box-shadow .35s}.team-card.team-visible{opacity:1;transform:none}
+.people-list-animated{position:relative;z-index:2}.team-card{opacity:1;transform:translateY(0) scale(1);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.75,.2,1),box-shadow .35s}.team-card.team-visible{opacity:1;transform:none}
 .team-card:hover{box-shadow:0 22px 60px rgba(10,23,40,.11);transform:translateY(-7px)}.team-card .portrait{position:relative;overflow:hidden}
 .team-card .portrait:after{content:"";position:absolute;width:60px;height:180%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent);transform:rotate(25deg) translateX(-150px);transition:transform .9s}.team-card:hover .portrait:after{transform:rotate(25deg) translateX(150px)}
 .team-card .tag-list span{transition:.25s}.team-card:hover .tag-list span{transform:translateY(-2px)}
@@ -170,4 +170,134 @@ body[data-page="practice"] .approach-step {
 body[data-page="practice"] .brand-loader.is-done,
 body[data-page="practice"] .brand-loader {
   pointer-events: none;
+}
+
+
+/* =========================================================
+   MOBILE TEAM VISIBILITY FIX — FINAL
+   Team profiles must never depend on IntersectionObserver.
+   ========================================================= */
+@media (max-width: 900px) {
+  .team-card,
+  .team-card.reveal-team {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+  }
+
+  .team-card {
+    animation: mobileTeamIn .65s cubic-bezier(.2,.75,.2,1) both;
+  }
+  .team-card:nth-child(1){animation-delay:.04s}
+  .team-card:nth-child(2){animation-delay:.09s}
+  .team-card:nth-child(3){animation-delay:.14s}
+  .team-card:nth-child(4){animation-delay:.19s}
+  .team-card:nth-child(5){animation-delay:.24s}
+  .team-card:nth-child(6){animation-delay:.29s}
+  .team-card:nth-child(7){animation-delay:.34s}
+  .team-card:nth-child(8){animation-delay:.39s}
+  .team-card:nth-child(9){animation-delay:.44s}
+  .team-card:nth-child(10){animation-delay:.49s}
+
+  .advocate-contact,
+  .advocate-phone-list,
+  .advocate-phone,
+  .advocate-whatsapp {
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+}
+
+@keyframes mobileTeamIn {
+  from { opacity:0; transform:translateY(18px); }
+  to   { opacity:1; transform:none; }
+}
+
+/* Accessibility: respect reduced-motion without hiding content. */
+@media (prefers-reduced-motion: reduce) {
+  .team-card {
+    animation: none !important;
+    opacity:1 !important;
+    transform:none !important;
+  }
+}
+
+/* =========================================================
+   POLICIES PAGE — PREMIUM LEGAL POLICY SYSTEM
+   ========================================================= */
+.policies-hero{background:radial-gradient(circle at 78% 25%,rgba(201,162,77,.13),transparent 31%),linear-gradient(120deg,#081321,#12233a);position:relative;overflow:hidden}
+.policies-hero:after{content:"POLICY";position:absolute;right:-3vw;bottom:-7vw;font-family:var(--serif);font-size:20vw;line-height:.7;color:rgba(255,255,255,.025);font-weight:700;letter-spacing:-5px}
+.policies-hero .container{position:relative;z-index:2}.policy-meta{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:30px;font-size:9px;letter-spacing:1.6px;text-transform:uppercase;color:#9eabbc}.policy-meta strong{color:#e4c979}.meta-dot{color:var(--gold);font-size:18px}
+.policy-shell{background:#f5f2eb}.policy-layout{display:grid;grid-template-columns:245px minmax(0,1fr);gap:70px;align-items:start}.policy-nav{position:sticky;top:105px;border-left:1px solid var(--line);background:rgba(245,242,235,.94);backdrop-filter:blur(12px);padding:7px 0}.policy-nav-title{font-size:9px;font-weight:800;letter-spacing:2px;color:var(--gold);padding:14px 18px;border-bottom:1px solid var(--line)}.policy-nav a{display:block;padding:11px 18px;font-size:10px;letter-spacing:.65px;color:#667080;border-bottom:1px solid rgba(16,19,23,.055);transition:.25s}.policy-nav a:hover{color:var(--navy);background:#fff}.policy-content{min-width:0}.policy-note{border:1px solid rgba(201,162,77,.35);background:linear-gradient(135deg,#fff,#f4efe3);padding:22px 24px;margin-bottom:42px;font-size:12px;color:#59616c;box-shadow:0 15px 40px rgba(10,23,40,.04)}.policy-note strong{color:#8f6a1e}.policy-section{display:grid;grid-template-columns:58px minmax(0,1fr);gap:26px;padding:48px 0;border-top:1px solid var(--line);scroll-margin-top:105px}.policy-number{font-family:var(--serif);font-size:28px;color:var(--gold);padding-top:4px}.policy-section h2{font-family:var(--serif);font-size:clamp(32px,4vw,48px);line-height:1;margin:8px 0 25px;color:var(--navy)}.policy-section h3{font-family:var(--serif);font-size:23px;margin:28px 0 7px;color:#202a35}.policy-section p{font-size:13px;line-height:1.95;color:#4f5864;max-width:850px}.policy-inline-link{color:#8f6a1e;text-decoration:underline;text-decoration-color:rgba(201,162,77,.65);text-underline-offset:4px}.policy-contact{background:#fff;margin-top:15px;padding:48px 32px;border:1px solid var(--line)}.policy-contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);margin:28px 0 32px}.policy-contact-grid div{background:#fbfaf7;padding:22px}.policy-contact-grid span{display:block;font-size:8px;letter-spacing:1.6px;color:var(--gold);font-weight:800;margin-bottom:7px}.policy-contact-grid strong{display:block;font-size:12px;line-height:1.5;color:var(--navy)}.policy-final-note{border-top:1px solid var(--line);padding:30px 0 0;margin-top:20px;font-size:11px;line-height:1.8;color:#697381}.policy-final-note strong{color:#8f6a1e}
+@media(max-width:900px){.policy-layout{grid-template-columns:1fr;gap:35px}.policy-nav{position:relative;top:auto;display:flex;overflow-x:auto;white-space:nowrap;border:1px solid var(--line);background:#fff;padding:0}.policy-nav-title{display:none}.policy-nav a{flex:0 0 auto;border-right:1px solid rgba(16,19,23,.06);border-bottom:0;padding:13px 15px}.policy-section{grid-template-columns:42px minmax(0,1fr);gap:17px}.policy-contact-grid{grid-template-columns:1fr}.policies-hero:after{font-size:27vw}}
+@media(max-width:600px){.policies-hero{padding-top:150px}.policy-meta{gap:8px}.policy-meta .meta-dot{display:none}.policy-section{padding:38px 0}.policy-section h2{font-size:35px}.policy-section h3{font-size:21px}.policy-section p{font-size:12px;line-height:1.85}.policy-note{font-size:11px;padding:18px}.policy-contact{padding:35px 20px}.policy-nav a{font-size:9px}.policy-number{font-size:24px}}
+
+
+/* =========================================================
+   FINAL MOBILE VISIBILITY FIX — POLICIES PAGE
+   Policy content must never depend on IntersectionObserver.
+   ========================================================= */
+body[data-page="policies"] main,
+body[data-page="policies"] main section,
+body[data-page="policies"] .site-header,
+body[data-page="policies"] .site-footer,
+body[data-page="policies"] .policy-layout,
+body[data-page="policies"] .policy-content,
+body[data-page="policies"] .policy-section,
+body[data-page="policies"] .policy-note,
+body[data-page="policies"] .policy-contact,
+body[data-page="policies"] .policy-final-note {
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+body[data-page="policies"] .auto-reveal,
+body[data-page="policies"] .auto-reveal.is-visible,
+body[data-page="policies"] .policy-section {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+}
+body[data-page="policies"] .brand-loader {
+  pointer-events: none !important;
+}
+
+@media (max-width: 900px) {
+  body[data-page="policies"] .policies-hero,
+  body[data-page="policies"] .policy-shell,
+  body[data-page="policies"] .policy-layout,
+  body[data-page="policies"] .policy-content,
+  body[data-page="policies"] .policy-section,
+  body[data-page="policies"] .policy-note,
+  body[data-page="policies"] .policy-contact,
+  body[data-page="policies"] .policy-final-note {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  body[data-page="policies"] .policy-section {
+    display: grid !important;
+  }
+
+  body[data-page="policies"] .policy-nav {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  body[data-page="policies"] .policy-nav a {
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+}
+
+@media (max-width: 600px) {
+  body[data-page="policies"] .page-hero {
+    min-height: auto !important;
+  }
+  body[data-page="policies"] .policy-shell {
+    padding-top: 30px !important;
+  }
 }
