@@ -65,3 +65,7 @@ Added:
 - People philosophy section
 
 V6: Supplied full SHETH ASSOCIATES logo only. No separate emblem is used in navigation, heroes, or loader.
+
+V7: Our People includes direct Call buttons and WhatsApp buttons for all 9 advocates using the numbers supplied by the firm.
+
+V8: Practice Areas replaced with the complete 14-area detailed content supplied by the firm, with animated index, detailed matter lists, strategy sections and litigation approach timeline.
