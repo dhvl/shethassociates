@@ -5,65 +5,9 @@ document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',
 const progress=document.querySelector('.progress');
 window.addEventListener('scroll',()=>{const h=document.documentElement.scrollHeight-innerHeight; progress.style.width=(h>0?(scrollY/h)*100:0)+'%';},{passive:true});
 if ('IntersectionObserver' in window) { const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.12}); document.querySelectorAll('.reveal').forEach(el=>obs.observe(el)); } else { document.querySelectorAll('.reveal').forEach(el=>el.classList.add('visible')); }
-document.querySelectorAll('form.contact-form').forEach(form => {
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const btn = form.querySelector('button[type="submit"]');
-    const originalText = btn ? btn.innerHTML : 'Send enquiry →';
-    
-    let statusEl = form.querySelector('.form-status');
-    if (!statusEl) {
-      statusEl = document.createElement('div');
-      statusEl.className = 'form-status';
-      statusEl.style.cssText = 'margin-top: 12px; font-size: 14px; padding: 10px 14px; border-radius: 4px; font-weight: 500; transition: all 0.3s ease;';
-      form.appendChild(statusEl);
-    }
-    statusEl.style.display = 'none';
-
-    if (btn) {
-      btn.disabled = true;
-      btn.innerHTML = 'Sending enquiry...';
-    }
-
-    const formData = new FormData(form);
-    const data = Object.fromEntries(formData.entries());
-
-    try {
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-      });
-      const result = await res.json();
-
-      if (res.ok && result.success) {
-        statusEl.style.background = 'rgba(197, 160, 89, 0.15)';
-        statusEl.style.color = '#c5a059';
-        statusEl.style.border = '1px solid #c5a059';
-        statusEl.innerText = result.message || 'Enquiry sent successfully!';
-        statusEl.style.display = 'block';
-        form.reset();
-        setTimeout(() => {
-          window.location.href = 'thank-you.html';
-        }, 1200);
-      } else {
-        throw new Error(result.error || 'Failed to send enquiry. Please try again.');
-      }
-    } catch (err) {
-      statusEl.style.background = 'rgba(220, 38, 38, 0.15)';
-      statusEl.style.color = '#ef4444';
-      statusEl.style.border = '1px solid #ef4444';
-      statusEl.innerText = err.message || 'An error occurred. Please try again or email info@shethassociates.in directly.';
-      statusEl.style.display = 'block';
-    } finally {
-      if (btn) {
-        btn.disabled = false;
-        btn.innerHTML = originalText;
-      }
-    }
-  });
-});
-
+document.querySelectorAll('form.contact-form').forEach(form=>form.addEventListener('submit',()=>{
+  setTimeout(()=>alert('Your email client will open to send the enquiry. For confidential documents, please wait until a secure communication method is agreed.'),50);
+}));
 
 // Subtle pointer glow for premium cards
 if(window.matchMedia('(pointer:fine)').matches){
